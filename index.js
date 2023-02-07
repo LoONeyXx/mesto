@@ -12,16 +12,17 @@ function handleFormSubmit(evt) {
 	evt.preventDefault();
 	popupInput.forEach((el) => {
 		if (el.id === "name" && el.value !== profileTitle.textContent) {
-			profileTitle.textContent = el.value;
+			profileTitle.textContent = el.value.trim(" ");
 			popup.classList.remove("popup_opened");
 			document.querySelector(".page").style.overflow = "";
 		}
-		if (el.id === "description" && el.value !== profileSubtitle.textContent) {
-			profileSubtitle.textContent = el.value;
+		if (el.id === "job" && el.value !== profileSubtitle.textContent) {
+			profileSubtitle.textContent = el.value.trim(" ");
 			popup.classList.remove("popup_opened");
 			document.querySelector(".page").style.overflow = "";
 		}
 	});
+	renderInput();
 }
 
 profileBtnEdit.addEventListener("click", () => {
@@ -34,7 +35,6 @@ profileBtnEdit.addEventListener("click", () => {
 popupBtnClose.addEventListener("click", (el) => {
 	if (popup.classList[1] === "popup_opened") {
 		popup.classList.remove("popup_opened");
-		renderInput();
 		document.querySelector(".page").style.overflow = "";
 	}
 });
@@ -47,14 +47,14 @@ function renderInput() {
 			el.id === "name" &&
 			(el.value === "" || el.value !== profileTitle.textContent)
 		) {
-			el.value = profileTitle.textContent;
+			el.value = profileTitle.textContent.trim(" ");
 		}
 
 		if (
-			el.id === "description" &&
+			el.id === "job" &&
 			(el.value === "" || el.value !== profileSubtitle.textContent)
 		) {
-			el.value = profileSubtitle.textContent;
+			el.value = profileSubtitle.textContent.trim(" ");
 		}
 	});
 }
@@ -65,25 +65,25 @@ elementsItems.forEach((el) => {
 	const likeBtn = el.querySelector(".elements__like-btn");
 	likeBtn.addEventListener("click", () => {
 		if (likeBtn.classList[2] !== "elements__like-btn_active") {
-			likeBtn.style["-webkit-transform"] = "scale(0)";
+			likeBtn.style["-webkit-transform"] = "scale(0) translateZ(0)";
 			likeBtn.classList.toggle("elements__like-btn_active");
 			setTimeout(() => {
-				likeBtn.style.transform = "scale(1)";
-			}, 200);
+				likeBtn.style.transform = "scale(1) translateZ(0)";
+			}, 075);
 
 			setTimeout(() => {
 				likeBtn.innerHTML = templateLikeActive;
-			}, 200);
+			}, 075);
 			console.log();
 		} else {
-			likeBtn.style["-webkit-transform"] = "scale(0)";
+			likeBtn.style["-webkit-transform"] = "scale(0) translateZ(0)";
 			likeBtn.classList.toggle("elements__like-btn_active");
 			setTimeout(() => {
-				likeBtn.style["-webkit-transform"] = "scale(1)";
-			}, 200);
+				likeBtn.style["-webkit-transform"] = "scale(1) translateZ(0)";
+			}, 075);
 			setTimeout(() => {
 				likeBtn.innerHTML = templateLikeDisabled;
-			}, 200);
+			}, 075);
 		}
 	});
 });
