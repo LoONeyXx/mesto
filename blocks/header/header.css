@@ -1,19 +1,17 @@
 .header {
+	box-sizing: border-box;
 	border-bottom: #545454 solid 1px;
 	max-width: 880px;
+	margin: 0 auto 40px;
+	padding: 0 0 41px 0;
+	width: 68.75%;
 }
 
-@media screen and (min-width: 980px) {
+@media screen and (max-width: 980px) {
 	.header {
-		margin: 0 auto 40px;
-		padding: 0 0 41px 0;
-		width: 68.75%;
-	}
-}
-
-@media screen and (max-width: 979.99px) {
-	.header {
-		padding: 0 0 31px 27px;
+		width: 88.125%;
+    min-width: 282px;
 		margin: 0 auto 42px;
+		padding: 0 0 32px 27px;
 	}
 }

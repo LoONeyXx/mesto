@@ -4,6 +4,13 @@
 	justify-self: end;
 	height: 50px;
 	border: 2px solid #fff;
+	background-image: url('../../../images/add-btn.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	border-radius: 2px;
+	width: 150px;
+	max-width: 150px;
+	margin-left:auto;
 
 }
 
@@ -14,18 +21,11 @@
 	}
 }
 
-@media screen and (min-width: 980px) {
-	.profile__btn-add {
-		width: 150px;
-		max-width: 150px;
-		margin-left:auto;
-	}
-}
-
-@media screen and (max-width: 979.99px) {
+@media screen and (max-width: 980px) {
 	.profile__btn-add {
 		width: 100%;
 		max-width: 282px;
+		margin: 0 auto;
 
 	}
 }
