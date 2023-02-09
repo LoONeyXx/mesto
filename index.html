@@ -5,7 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="./pages/index.css" />
-		<title>Document</title>
+		<title>Mesto</title>
 	</head>
 
 	<body class="page">
@@ -20,21 +20,31 @@
 					class="profile__image" />
 				<div class="profile__info">
 					<h1 class="profile__title">LoONeyXx</h1>
-					<button class="profile__btn-edit button opacity"></button>
+					<button
+						type="button"
+						class="profile__btn-edit button opacity"></button>
 					<p class="profile__subtitle">Просто хороший человек</p>
 				</div>
-				<button class="profile__btn-add button opacity"></button>
+				<button type="button" class="profile__btn-add button opacity"></button>
 			</section>
 			<section class="popup">
 				<div class="popup__container">
-					<button class="button popup__btn-close opacity">
-						<img src="./images/Close Icon.svg" alt="крестик закрывания окна" />
-					</button>
+					<button
+						type="button"
+						class="button popup__btn-close opacity"></button>
 					<h2 class="popup__title">Редактировать профиль</h2>
-					<form name="popup__form" action="#" class="popup__form">
+					<form name="popup-form" action="#" class="popup__form">
 						<fieldset class="popup__input-group">
-							<input class="popup__input popup__input_type_name" type="text" name="name" id="name" />
-							<input class="popup__input popup__input_type_job" type="text" name="job" id="job" />
+							<input
+								class="popup__input popup__input_type_name"
+								type="text"
+								name="name"
+								id="name" />
+							<input
+								class="popup__input popup__input_type_job"
+								type="text"
+								name="job"
+								id="job" />
 						</fieldset>
 						<button class="button popup__btn-save" type="submit">
 							Cохранить
@@ -105,7 +115,10 @@
 						</div>
 					</li>
 					<li class="elements__item">
-						<img src="./images/sochi.png" alt="На изображении мы видим фотографию сочинского олимпийского огня. У конструкции основание состоит из большого круглого бассейна с фонтанами над которыми и возвышается сам факел" class="elements__image" />
+						<img
+							src="./images/sochi.png"
+							alt="На изображении мы видим фотографию сочинского олимпийского огня. У конструкции основание состоит из большого круглого бассейна с фонтанами над которыми и возвышается сам факел"
+							class="elements__image" />
 						<div class="elements__title-zone">
 							<h2 class="elements__title">Сочи</h2>
 							<button type="button" class="button elements__like-btn">
@@ -134,9 +147,9 @@
 				</ul>
 			</section>
 		</main>
-			<footer class="footer">
-				<p class="footer__copytight">© 2020 Mesto Russia</p>
-			</footer>
+		<footer class="footer">
+			<p class="footer__copytight">© 2020 Mesto Russia</p>
+		</footer>
 		<script src="./scripts/index.js"></script>
 	</body>
 </html>

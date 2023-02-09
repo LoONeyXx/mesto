@@ -8,14 +8,14 @@
 	background-position: center;
 	grid-area: btn-edit;
 	align-self: center;
-	margin-bottom: 32px;
+	margin: 0 0 32px 0;
 	height: 24px;
 	width: 24px;
 }
 
 @media screen and (max-width: 980px) {
 	.profile__btn-edit {
-		margin: 2px 0 0 ;
+		margin: 2px 0 0;
 		width: 18px;
 		height: 18px;
 		background-size: 7.5px 7.5px;

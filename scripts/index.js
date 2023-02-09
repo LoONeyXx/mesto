@@ -21,6 +21,19 @@ function renderInput() {
 	}
 }
 
+//Функция для открытия попапа
+
+function openPopup() {
+	renderInput();
+	popup.classList.add("popup_opened");
+}
+
+//Функция для закрытия попапа
+
+function closePopup() {
+	popup.classList.remove("popup_opened");
+}
+
 //Функция для открывания popup и поведение кнопки 'Сохранить'
 
 function handleFormSubmit(evt) {
@@ -35,12 +48,14 @@ function handleFormSubmit(evt) {
 	}
 }
 
-//Функция для закрытия попапа
+//Функция для открытия попапа
 
 function openPopup() {
-	renderInput()
-	popup.classList.add('popup_opened')
+	renderInput();
+	popup.classList.add("popup_opened");
 }
+
+//Функция для закрытия попапа
 
 function closePopup() {
 	popup.classList.remove("popup_opened");
@@ -48,9 +63,9 @@ function closePopup() {
 
 //Прослушка событий для кнопок close и edit в профиле
 
-profileBtnEdit.addEventListener("click", openPopup)
+profileBtnEdit.addEventListener("click", openPopup);
 
-popupBtnClose.addEventListener("click", closePopup)
+popupBtnClose.addEventListener("click", closePopup);
 
 popupForm.addEventListener("submit", handleFormSubmit);
 

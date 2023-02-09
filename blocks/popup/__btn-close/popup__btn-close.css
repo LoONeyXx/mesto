@@ -5,11 +5,13 @@
 	z-index: 3;
 	top: -40px;
 	right: -40px;
+	background-image: url("../../../images/Close Icon.svg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
 }
 
-
-
-@media screen and (max-width:979px) {
+@media screen and (max-width: 980px) {
 	.popup__btn-close {
 		width: 20px;
 		height: 20px;
