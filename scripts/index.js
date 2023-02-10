@@ -9,7 +9,7 @@ const profileBtnEdit = document.querySelector(".profile__btn-edit");
 const popupBtnClose = popup.querySelector(".popup__btn-close");
 const popupForm = popup.querySelector(".popup__form");
 
-//Функция для рендера инпут полей
+/*     Функция для рендера инпут полей     */
 
 function renderInput() {
 
@@ -18,20 +18,20 @@ function renderInput() {
 
 }
 
-//Функция для открытия попапа
+/*     Функция открытия Popup    */
 
 function openPopup() {
   renderInput();
   popup.classList.add("popup_opened");
 }
 
-//Функция для закрытия попапа
+/*     Функция закрытия Popup  */
 
 function closePopup() {
   popup.classList.remove("popup_opened");
 }
 
-//Функция для открывания popup и поведение кнопки 'Сохранить'
+/*     Функция для открывания popup и поведение кнопки 'Сохранить'     */
 
 function handleFormSubmit(evt) {
   evt.preventDefault();
@@ -42,7 +42,7 @@ function handleFormSubmit(evt) {
 }
 
 
-//Прослушка событий для кнопок close и edit в профиле
+/*     Прослушка событий для кнопок close и edit в профиле     */
 
 profileBtnEdit.addEventListener("click", openPopup);
 
