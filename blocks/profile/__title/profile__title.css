@@ -8,6 +8,8 @@
 	grid-area: title;
 	font-size: 42px;
 	line-height: 1.1428571429;
+  max-width: 294px;
+
 }
 
 @media screen and (max-width: 980px) {

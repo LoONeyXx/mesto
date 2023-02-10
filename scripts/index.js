@@ -12,54 +12,35 @@ const popupForm = popup.querySelector(".popup__form");
 //Функция для рендера инпут полей
 
 function renderInput() {
-	if (popupInputName) {
-		popupInputName.value = profileTitle.textContent.trim(" ");
-	}
 
-	if (popupInputJob) {
-		popupInputJob.value = profileSubtitle.textContent.trim(" ");
-	}
+  popupInputName.value = profileTitle.textContent.trim(" ");
+  popupInputJob.value = profileSubtitle.textContent.trim(" ");
+
 }
 
 //Функция для открытия попапа
 
 function openPopup() {
-	renderInput();
-	popup.classList.add("popup_opened");
+  renderInput();
+  popup.classList.add("popup_opened");
 }
 
 //Функция для закрытия попапа
 
 function closePopup() {
-	popup.classList.remove("popup_opened");
+  popup.classList.remove("popup_opened");
 }
 
 //Функция для открывания popup и поведение кнопки 'Сохранить'
 
 function handleFormSubmit(evt) {
-	evt.preventDefault();
-	if (popupInputName) {
-		profileTitle.textContent = popupInputName.value;
-		closePopup();
-	}
-	if (popupInputJob) {
-		profileSubtitle.textContent = popupInputJob.value;
-		closePopup();
-	}
+  evt.preventDefault();
+  profileTitle.textContent = popupInputName.value;
+  profileSubtitle.textContent = popupInputJob.value;
+  closePopup();
+
 }
 
-//Функция для открытия попапа
-
-function openPopup() {
-	renderInput();
-	popup.classList.add("popup_opened");
-}
-
-//Функция для закрытия попапа
-
-function closePopup() {
-	popup.classList.remove("popup_opened");
-}
 
 //Прослушка событий для кнопок close и edit в профиле
 
