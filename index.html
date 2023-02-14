@@ -30,7 +30,7 @@
         <form name="popup-form-edit" action="#" class="popup__form">
           <fieldset class="popup__input-group">
             <input class="popup__input popup__input_type_name" type="text" name="name" id="name">
-            <input class="popup__input popup__input_type_job" type="text" name="job" id="job">
+            <input class="popup__input popup__input_type-job" type="text" name="job" id="job">
           </fieldset>
           <button class="button popup__btn-save popup__btn-save_type_edit-profile" type="submit">
             Cохранить
@@ -45,7 +45,7 @@
         <form name="popup-form-cards" action="#" class="popup__form">
           <fieldset class="popup__input-group popup__input-group_type">
             <input placeholder='Название' class="popup__input popup__input_type_card-title" type="text" name="card-title" id="card-title">
-            <input placeholder='Ссылка на картинку' class="popup__input popup__input_type_job" type="text" name="link" id="link">
+            <input placeholder='Ссылка на картинку' class="popup__input popup__input_type-link" type="text" name="link-image" id="link-image">
           </fieldset>
           <button class="button popup__btn-save" type="submit">
             Создать
@@ -54,9 +54,22 @@
       </div>
     </section>
     <section class="elements">
+      <template class="template-item">
+         <li class="elements__item">
+          <button class="button elements__delete-btn"></button>
+          <img src=""
+            alt="На изображении длинный прямоугольный бассей в котором расположены фонтаны и вокруг зона прогулки и все это на фоне города и виднеющегося обелиска"
+            class="elements__image">
+          <div class="elements__title-zone">
+            <h2 class="elements__title"></h2>
+            <button type="button" class="button elements__like-btn">
+            </button>
+          </div>
+        </li>
+      </template>
       <ul class="list elements__container">
         <li class="elements__item">
-          <button class="button elemets__delete-btn"></button>
+          <button class="button elements__delete-btn"></button>
           <img src=""
             alt="На изображении длинный прямоугольный бассей в котором расположены фонтаны и вокруг зона прогулки и все это на фоне города и виднеющегося обелиска"
             class="elements__image">
@@ -67,7 +80,7 @@
           </div>
         </li>
         <li class="elements__item">
-          <button class="button elemets__delete-btn"></button>
+          <button class="button elements__delete-btn"></button>
           <img src=""
             alt="Вечернаяя Москва с высоты птичьего полета и знаменитая Останкинская башня. Башня горит разноцветными огнями"
             class="elements__image">
@@ -78,7 +91,7 @@
           </div>
         </li>
         <li class="elements__item">
-          <button class="button elemets__delete-btn"></button>
+          <button class="button elements__delete-btn"></button>
           <img src=""
             alt="Изображения набережной где много чаек и все это на ярко оранжево-красном закате где вдалеке виднеется высокая конусновидная башня 'Лахта центр', который является самым большим небоскребом в Европе"
             class="elements__image">
@@ -88,7 +101,7 @@
           </div>
         </li>
         <li class="elements__item">
-          <button class="button elemets__delete-btn"></button>
+          <button class="button elements__delete-btn"></button>
           <img src="" alt="Изображение площади в цетрн которой стоит памятник Никите Димидову славный тем что построил первый в Росси чугуноплавительный завод. Вокруг памятника красиво высажение красно белые цветы. На заднем плане виднеется монастырь." class="elements__image">
           <div class="elements__title-zone">
             <h2 class="elements__title"></h2>
@@ -97,7 +110,7 @@
           </div>
         </li>
         <li class="elements__item">
-          <button class="button elemets__delete-btn"></button>
+          <button class="button elements__delete-btn"></button>
           <img src=""
             alt="На изображении мы видим фотографию сочинского олимпийского огня. У конструкции основание состоит из большого круглого бассейна с фонтанами над которыми и возвышается сам факел"
             class="elements__image">
@@ -108,7 +121,7 @@
           </div>
         </li>
         <li class="elements__item">
-          <button class="button elemets__delete-btn"></button>
+          <button class="button elements__delete-btn"></button>
           <img src=""
             alt="На изображении Ярославский художественный музей построенный в 1820 году. Цвет у него желтый с красивой архитектурой  к главному ходу тянется длинный снисходящий пандус как слева так исправа. Во дворе красиво постриженные кусты загругленной формы и кругый бассейн. Погода солнечная"
             class="elements__image">
