@@ -4,4 +4,6 @@
   border-top-right-radius: 10px;
   object-fit: cover;
   flex-grow: 1;
+  height: 282px;
+  cursor: pointer;
 }
