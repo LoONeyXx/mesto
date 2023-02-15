@@ -24,7 +24,7 @@ const templateItem = document.querySelector(".template-item");
 
 // Обьект названия и ссылки карточек
 
-const initialCards = [
+let initialCards = [
   {
     name: "Екатеринбург",
     link: "./images/ekat.png",
@@ -70,6 +70,15 @@ function addedNewCard() {
   likeBtn.addEventListener("click", toogleLike);
   imgCard.addEventListener('click',openPopup)
 }
+
+/*   Функция удаления карточки  и добавление в массив InitialCards     */
+function deletedCard(evt) {
+  const delBtn = evt.target;
+  delBtn.parentElement.remove();
+  const name = delBtn.parentElement.querySelector('h2').textContent;
+  let newCardsArray = initialCards.filter(el => el.name !== name);
+    initialCards = newCardsArray
+  }
 
 /*     Функция для рендера инпут полей     */
 
@@ -150,11 +159,7 @@ function closePopup(evt) {
     popupEditProfile.classList.remove("popup_opened");
   }
 }
-/*   Функция удаления карточки         */
-function deletedCard(evt) {
-  const card = evt.target;
-  card.parentElement.remove();
-}
+
 
 /*   Функция рендера Карточек        */
 
