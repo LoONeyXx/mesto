@@ -77,10 +77,11 @@ function addedNewCard() {
     closeBtn.addEventListener('click', () => closePopup(popupTypeImage))
     elementBtnDelete.addEventListener("click", deletedCard);
     likeBtn.addEventListener("click", toogleLike);
-    imgCard.addEventListener("click",() => {
+    imgCard.addEventListener("click", () => {
       popupImage.src = imgCard.src
       popupImageText.textContent = imgCardTitle.textContent
-      openPopup(popupTypeImage)})
+      openPopup(popupTypeImage)
+    })
     return newCard
   }
 }
@@ -124,7 +125,7 @@ function toogleLike(evt) {
     }, 100);
   }
 }
-function renderPopupImage (item) {
+function renderPopupImage(item) {
   const image = document.querySelector(".popup__image");
   const imageText = document.querySelector(".popup__image-text");
 }
@@ -132,7 +133,6 @@ function renderPopupImage (item) {
 /*    Функция открытия Popup             */
 
 function openPopup(popup) {
-  console.log(popup)
   renderInput(popup);
   popup.classList.add("popup_opened");
 }
@@ -142,8 +142,6 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
 }
-
-
 
 /*   Функция рендера Карточек        */
 
@@ -179,7 +177,7 @@ function handleFormSubmit(evt) {
 
 popupBtnCloseTypeEdit.addEventListener('click', () => closePopup(popupEditProfile))
 popupBtnCloseTypeAdd.addEventListener('click', () => closePopup(popupAddCards))
-profileAddBtn.addEventListener("click",() => openPopup(popupAddCards));
+profileAddBtn.addEventListener("click", () => openPopup(popupAddCards));
 profileBtnEdit.addEventListener("click", () => openPopup(popupEditProfile));
 popupForm.forEach(el => el.addEventListener("submit", handleFormSubmit));
 
