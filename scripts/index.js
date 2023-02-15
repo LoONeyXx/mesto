@@ -18,7 +18,7 @@ const profileAddBtn = document.querySelector(".profile__btn-add");
 const cardsContainer = document.querySelector(".cards__container");
 const cardsItem = Array.from(document.querySelectorAll(".cards__item"));
 const cardsTitleInput = document.querySelector(".popup__input_type_card-title");
-const cardsLinkInput = document.querySelector(".popup__input__type_card-link");
+const cardsLinkInput = document.querySelector(".popup__input_type_card-link");
 const cardsImage = document.querySelectorAll(".cards__image");
 const templateItem = document.querySelector(".template-item");
 
