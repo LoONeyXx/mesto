@@ -70,11 +70,11 @@ function addedNewCard() {
     const imgCardTitle = newCard.querySelector('.cards__title');
     const likeBtn = newCard.querySelector('.cards__like-btn');
     const elementBtnDelete = newCard.querySelector('.cards__delete-btn');
-    elementBtnDelete.addEventListener('click', deletedCard);
-    likeBtn.addEventListener("click", toogleLike);
     titleCard.textContent = title
     imgCard.src = link
     imgCard.alt = title
+    elementBtnDelete.addEventListener('click', deletedCard);
+    likeBtn.addEventListener("click", toogleLike);
     imgCard.addEventListener("click", () => {
       popupImage.src = imgCard.src
       popupImage.alt = imgCard.alt
@@ -96,7 +96,6 @@ function renderCards() {
     cardsArray[i] = createCard(cardTitle, cardLink)
     cardsContainer.append(...cardsArray)
   }
-
   cardsContainer.append(...cardsArray)
 }
 
@@ -109,7 +108,6 @@ function deletedCard(evt) {
 /*     Функция для рендера инпут полей профиля    */
 
 function renderInputEdit() {
-  console.log(profileTitle.textContent)
   popupInputName.value = profileTitle.textContent.trim();
   popupInputJob.value = profileSubtitle.textContent.trim();
 
@@ -117,8 +115,7 @@ function renderInputEdit() {
 /*     Функция для рендера инпут полей добавления карточек    */
 
 function renderInputAddCards() {
-  popupAddCards.querySelector('.popup__form').reset()
-  popupAddCards.querySelector('.popup__form').reset()
+  popupFormCards.reset()
 }
 /*     Функция переключение состояния кнопки Like,*/
 
