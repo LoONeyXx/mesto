@@ -31,31 +31,30 @@ const closeBtns = document.querySelectorAll('.popup__btn-close')
 
 
 // Создание новой карточки
-{
-  function createCard(title, link) {
-    const newCard = cardTemplate.cloneNode(true)
-    const titleCard = newCard.querySelector(".cards__title");
-    const imgCard = newCard.querySelector('.cards__image');
-    const imgCardTitle = newCard.querySelector('.cards__title');
-    const likeBtn = newCard.querySelector('.cards__like-btn');
-    const elementBtnDelete = newCard.querySelector('.cards__delete-btn');
-    titleCard.textContent = title
-    imgCard.src = link
-    imgCard.alt = title
-    elementBtnDelete.addEventListener('click', deletedCard);
-    likeBtn.addEventListener("click", toogleLike);
-    imgCard.addEventListener("click", () => {
-      popupImage.src = imgCard.src
-      popupImage.alt = imgCard.alt
-      popupImageText.textContent = imgCardTitle.textContent
-      openPopup(popupTypeImage)
-    })
 
-    return newCard
-  }
+function createCard(title, link) {
+  const newCard = cardTemplate.cloneNode(true)
+  const titleCard = newCard.querySelector(".cards__title");
+  const imgCard = newCard.querySelector('.cards__image');
+  const imgCardTitle = newCard.querySelector('.cards__title');
+  const likeBtn = newCard.querySelector('.cards__like-btn');
+  const elementBtnDelete = newCard.querySelector('.cards__delete-btn');
+  titleCard.textContent = title
+  imgCard.src = link
+  imgCard.alt = title
+  elementBtnDelete.addEventListener('click', deletedCard);
+  likeBtn.addEventListener("click", toogleLike);
+  imgCard.addEventListener("click", () => {
+    popupImage.src = imgCard.src
+    popupImage.alt = imgCard.alt
+    popupImageText.textContent = imgCardTitle.textContent
+    openPopup(popupTypeImage)
+  })
+
+  return newCard
 }
 
-/*   Функция рендера Карточек        */
+
 /*       Функция добавления новых карточек         */
 
 function addedNewCard() {
@@ -65,6 +64,7 @@ function addedNewCard() {
   cardsContainer.prepend(newCard);
 }
 
+/*   Функция рендера Карточек        */
 function renderCards() {
   const cardsArray = [];
   initialCards.forEach(el =>
