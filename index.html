@@ -27,14 +27,16 @@
       <div class="popup__container">
         <button type="button" class="button popup__btn-close opacity"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form name="popup-form-edit" action="#" class="popup__form">
+        <form name="popup-form-edit" action="#" class="popup__form popup__form_type_edit">
           <fieldset class="popup__input-group">
-            <input class="popup__input popup__input_type_name" type="text" name="name" id="name">
-            <input class="popup__input popup__input_type_job" type="text" name="job" id="job">
+            <input novalidate minlength="2"  maxlength="30" required class="popup__input popup__input_type_name" type="text" name="name" id="name">
+            <span class="popup__input-error name-error"></span>
+            <input novalidate minlength="2"  maxlength="200" required class="popup__input popup__input_type_job" type="text" name="job" id="job">
+            <span class="popup__input-error job-error"></span>
+            <button class="button popup__btn-save popup__btn-save_type_edit-profile" type="submit">
+              Cохранить
+            </button>
           </fieldset>
-          <button class="button popup__btn-save popup__btn-save_type_edit-profile" type="submit">
-            Cохранить
-          </button>
         </form>
       </div>
     </section>
@@ -42,16 +44,19 @@
       <div class="popup__container">
         <button type="button" class="button popup__btn-close popup__btn-close_type_add-cards opacity"></button>
         <h2 class="popup__title">Новое место</h2>
-        <form name="popup-form-cards" action="#" class="popup__form">
+        <form name="popup-form-cards" action="#" class="popup__form popup__form_type_cards">
           <fieldset class="popup__input-group">
-            <input placeholder='Название' class="popup__input popup__input_type_card-title" type="text"
-              name="card-title" id="card-title">
-            <input placeholder='Ссылка на картинку' class="popup__input popup__input_type_card-link" type="text"
-              name="link-image" id="link-image">
+            <input novalidate minlength="2" maxlength="30" required placeholder='Название' class="popup__input popup__input_type_card-title" type="text"
+              name="card-title" id="title">
+            <span class="popup__input-error title-error">1245</span>
+            <input novalidate required placeholder='Ссылка на картинку' class="popup__input popup__input_type_card-link" type="url"
+              name="link-image" id="link">
+            <span class="popup__input-error link-error"></span>
+            <button class="button popup__btn-save popup__btn-save_type_cards" type="submit">
+              Создать
+            </button>
           </fieldset>
-          <button class="button popup__btn-save" type="submit">
-            Создать
-          </button>
+
         </form>
       </div>
     </section>
@@ -63,12 +68,10 @@
       </figure>
     </section>
     <section class="cards">
-      <template class="template-item">
+      <template id="template-card" class="template-item">
         <li class="cards__item">
-          <button class="button cards__delete-btn"></button>
-          <img src="#"
-            alt="На изображении длинный прямоугольный бассей в котором расположены фонтаны и вокруг зона прогулки и все это на фоне города и виднеющегося обелиска"
-            class="cards__image">
+          <button class="button cards__delete-btn opacity"></button>
+          <img src="#" alt="" class="cards__image">
           <div class="cards__title-zone">
             <h2 class="cards__title"></h2>
             <button type="button" class="button cards__like-btn">
@@ -83,7 +86,9 @@
   <footer class="footer">
     <p class="footer__copytight">© 2020 Mesto Russia</p>
   </footer>
+  <script src="/scripts/constants.js"></script>
   <script src="./scripts/index.js"></script>
+  <script src="./scripts/validation.js"></script>
 </body>
 
 </html>
