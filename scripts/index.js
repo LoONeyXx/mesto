@@ -24,10 +24,14 @@ const profileAddBtn = document.querySelector(".profile__btn-add");
 
 //  Перменные карточек
 const cardsContainer = document.querySelector(".cards__container");
+
 const cardTemplate = document.querySelector('#template-card').content
+
 const cardsTitleInput = document.querySelector(".popup__input_type_card-title");
 const cardsLinkInput = document.querySelector(".popup__input_type_card-link");
 const closeBtns = document.querySelectorAll('.popup__btn-close')
+
+// Обьект названия и ссылки карточек
 
 
 // Создание новой карточки
@@ -54,6 +58,8 @@ function createCard(title, link) {
   return newCard
 }
 
+
+
 /*       Функция добавления новых карточек         */
 
 function addedNewCard() {
@@ -69,6 +75,20 @@ function renderCards() {
   initialCards.forEach(el =>
     cardsArray.unshift(createCard(el.name, el.link))
   )
+  cardsContainer.append(...cardsArray)
+
+}
+
+/*   Функция рендера Карточек        */
+
+function renderCards() {
+  const cardsArray = [];
+  for (let i = 0; i < initialCards.length; i++) {
+    const cardTitle = initialCards[i].name
+    const cardLink = initialCards[i].link
+    cardsArray[i] = createCard(cardTitle, cardLink)
+    cardsContainer.append(...cardsArray)
+  }
   cardsContainer.append(...cardsArray)
 }
 
@@ -92,8 +112,10 @@ function removeError(popup) {
 }
 function disabledBtn(button) {
   button.classList.add('popup__btn-save_disabled')
+
 }
 /*     Функция для рендера инпут полей добавления карточек    */
+
 
 function enableBtn(button) {
   button.classList.remove('popup__btn-save_disabled')
@@ -125,6 +147,8 @@ function toogleLike(evt) {
 /*    Функция открытия Popup             */
 
 function openPopup(popup) {
+
+
   popup.classList.add("popup_opened");
   addOverlayListeners (popup)
 
@@ -158,6 +182,7 @@ function closePopup(popup) {
 }
 
 
+
 /*     Функция для открывания popup и поведение кнопки 'Сохранить'     */
 
 function handleFormSubmitAddCard(evt) {
@@ -176,9 +201,11 @@ function handleFormSubmit(evt) {
 
 closeBtns.forEach(button => {
   const popup = button.closest('.popup')
+
   button.addEventListener('click', () => {
     closePopup(popup)
   })
+
 })
 
 /*    Прослушка событий для кнопок close и edit add в профиле     */
@@ -194,6 +221,7 @@ profileBtnEdit.addEventListener("click", () => {
   openPopup(popupEditProfile)
   renderEditForm()
 });
+
 
 popupFormEdit.addEventListener('submit', handleFormSubmit)
 popupFormCards.addEventListener('submit', handleFormSubmitAddCard)
