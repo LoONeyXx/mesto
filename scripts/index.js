@@ -115,7 +115,7 @@ function closeOnOverlayClick(evt) {
 
 function addOverlayListeners (popup) {
   document.addEventListener('keydown', escapeFromPopup)
-  popup.addEventListener('click', closeOnOverlayClick)
+  popup.addEventListener('mousedown', closeOnOverlayClick)
 }
 
 function removeOverlayListeners (popup) {
@@ -124,7 +124,7 @@ function removeOverlayListeners (popup) {
 }
 
 function closePopup(popup) {
-  popup.removeEventListener('click', closeOnOverlayClick)
+  popup.removeEventListener('mousedown', closeOnOverlayClick)
   removeOverlayListeners(popup)
 
 
