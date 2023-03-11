@@ -74,44 +74,18 @@ function renderCards() {
 function deletedCard(evt) {
   evt.target.closest('.cards__item').remove();
 }
-
-/* Функция удаления всех ошибок (используется в рендере) */
-
-function removeError(popup) {
-  const inputList = popup.querySelectorAll('.popup__input')
-  inputList.forEach(input => {
-    const errorElement = document.querySelector(`.${input.id}-error`)
-    input.classList.remove(config.inputErrorClass)
-    errorElement.classList.remove(config.errorActiveClass)
-
-  })
-  /* Функции активации и деактивации Submit кнопки (используется в рендере) */
-}
-function disabledBtn(button) {
-  button.classList.add('popup__btn-save_disabled')
-
-}
-/*     Функция для рендера инпут полей добавления карточек    */
-
-
-function enableBtn(button) {
-  button.classList.remove('popup__btn-save_disabled')
-}
-
 /*     Функция для рендера формы добавления карточек    */
 function renderFormCard() {
-  removeError(popupAddCards)
-  disabledBtn(addBtnSubmit)
   popupFormCards.reset()
+  resetError(popupAddCards,config)
 }
 
 /*     Функция для рендера формы профиля    */
 
 function renderEditForm() {
-  enableBtn(editBtnSibmit)
-  removeError(popupEditProfile)
   popupInputName.value = profileTitle.textContent.trim();
   popupInputJob.value = profileSubtitle.textContent.trim();
+  resetError(popupEditProfile,config)
 
 }
 
@@ -131,8 +105,8 @@ function openPopup(popup) {
 
 /*   Функция закрытия Popup  */
 function escapeFromPopup(event) {
-  const openPopup = document.querySelector('.popup_opened')
   if (event.key === 'Escape') {
+    const openPopup = document.querySelector('.popup_opened')
     closePopup(openPopup)
   }
 }
