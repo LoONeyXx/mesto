@@ -126,9 +126,8 @@ function toogleLike(evt) {
 /*    Функция открытия Popup             */
 
 function openPopup(popup) {
-  document.addEventListener('keydown', escapeFromPopup)
-  popup.addEventListener('click', closeOnOverlayClick)
   popup.classList.add("popup_opened");
+  addOverlayListeners (popup)
 
 }
 
@@ -143,11 +142,18 @@ function escapeFromPopup(event) {
 function closeOnOverlayClick(evt) {
   closePopup(evt.target)
 }
+function addOverlayListeners (popup) {
+  document.addEventListener('keydown', escapeFromPopup)
+  popup.addEventListener('click', closeOnOverlayClick)
+}
 
-function closePopup(popup) {
+function removeOverlayListeners (popup) {
   popup.classList.remove("popup_opened");
   document.removeEventListener('keydown', escapeFromPopup)
+}
+function closePopup(popup) {
   popup.removeEventListener('click', closeOnOverlayClick)
+  removeOverlayListeners(popup)
 
 
 }
