@@ -11,9 +11,11 @@ const popupImageText = document.querySelector('.popup__image-text')
 const popupFormEdit = document.querySelector(".popup__form_type_edit");
 const popupFormCards = document.querySelector(".popup__form_type_cards");
 const popupTypeImage = document.querySelector(".popup_type_image");
+
 const popups = document.querySelectorAll('.popup')
 const addBtnSubmit = document.querySelector('.popup__btn-save_type_cards')
 const editBtnSibmit = document.querySelector('.popup__btn-save_type_edit-profile')
+
 /*   Перменные профиля           */
 const profileTitle = document.querySelector(".profile__title");
 const profileSubtitle = document.querySelector(".profile__subtitle");
@@ -22,7 +24,9 @@ const profileAddBtn = document.querySelector(".profile__btn-add");
 
 //  Перменные карточек
 const cardsContainer = document.querySelector(".cards__container");
+
 const cardTemplate = document.querySelector('#template-card').content
+
 const cardsTitleInput = document.querySelector(".popup__input_type_card-title");
 const cardsLinkInput = document.querySelector(".popup__input_type_card-link");
 const closeBtns = document.querySelectorAll('.popup__btn-close')
@@ -55,6 +59,7 @@ function createCard(title, link) {
 }
 
 
+
 /*       Функция добавления новых карточек         */
 
 function addedNewCard() {
@@ -64,6 +69,7 @@ function addedNewCard() {
   cardsContainer.prepend(newCard);
 }
 
+
 /*   Функция рендера Карточек        */
 function renderCards() {
   const cardsArray = [];
@@ -71,8 +77,21 @@ function renderCards() {
     cardsArray.unshift(createCard(el.name, el.link))
   )
   cardsContainer.append(...cardsArray)
+
 }
 
+/*   Функция рендера Карточек        */
+
+function renderCards() {
+  const cardsArray = [];
+  for (let i = 0; i < initialCards.length; i++) {
+    const cardTitle = initialCards[i].name
+    const cardLink = initialCards[i].link
+    cardsArray[i] = createCard(cardTitle, cardLink)
+    cardsContainer.append(...cardsArray)
+  }
+  cardsContainer.append(...cardsArray)
+}
 
 /*   Функция удаления карточки  и добавление в массив InitialCards     */
 
@@ -94,7 +113,10 @@ function removeError(popup) {
 }
 function disabledBtn(button) {
   button.classList.add('popup__btn-save_disabled')
+
 }
+/*     Функция для рендера инпут полей добавления карточек    */
+
 
 function enableBtn(button) {
   button.classList.remove('popup__btn-save_disabled')
@@ -126,6 +148,8 @@ function toogleLike(evt) {
 /*    Функция открытия Popup             */
 
 function openPopup(popup) {
+
+
   popup.classList.add("popup_opened");
   addOverlayListeners (popup)
 
@@ -159,6 +183,7 @@ function closePopup(popup) {
 }
 
 
+
 /*     Функция для открывания popup и поведение кнопки 'Сохранить'     */
 
 function handleFormSubmitAddCard(evt) {
@@ -177,14 +202,17 @@ function handleFormSubmit(evt) {
 
 closeBtns.forEach(button => {
   const popup = button.closest('.popup')
+
   button.addEventListener('click', () => {
     closePopup(popup)
   })
+
 })
 
 /*    Прослушка событий для кнопок close и edit add в профиле     */
 
 profileAddBtn.addEventListener("click", () => {
+
 
   openPopup(popupAddCards)
   renderFormCard()
@@ -195,6 +223,7 @@ profileBtnEdit.addEventListener("click", () => {
   openPopup(popupEditProfile)
   renderEditForm()
 });
+
 
 popupFormEdit.addEventListener('submit', handleFormSubmit)
 popupFormCards.addEventListener('submit', handleFormSubmitAddCard)
