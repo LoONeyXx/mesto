@@ -119,15 +119,13 @@ function addOverlayListeners (popup) {
 }
 
 function removeOverlayListeners (popup) {
-  popup.classList.remove("popup_opened");
+  popup.removeEventListener('mousedown', closeOnOverlayClick)
   document.removeEventListener('keydown', escapeFromPopup)
 }
 
 function closePopup(popup) {
-  popup.removeEventListener('mousedown', closeOnOverlayClick)
+  popup.classList.remove("popup_opened");
   removeOverlayListeners(popup)
-
-
 }
 
 /*     Функция для открывания popup и поведение кнопки 'Сохранить'     */
