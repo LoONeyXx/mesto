@@ -10,8 +10,6 @@ const popupFormEdit = document.querySelector(".popup__form_type_edit");
 const popupFormCards = document.querySelector(".popup__form_type_cards");
 const popupTypeImage = document.querySelector(".popup_type_image");
 const popups = document.querySelectorAll('.popup')
-const addBtnSubmit = document.querySelector('.popup__btn-save_type_cards')
-const editBtnSibmit = document.querySelector('.popup__btn-save_type_edit-profile')
 
 /*   Перменные профиля           */
 const profileTitle = document.querySelector(".profile__title");
