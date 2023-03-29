@@ -1,17 +1,25 @@
+
 export class FormValidation {
   constructor(config, formElement) {
     this._config = config
     this._formElement = formElement
+    this._inputList = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
+    this._buttonElement = this._formElement.querySelector(this._config.submitButtonSelector)
   }
-
 
   enableValidation() {
     this._setEventListeners();
   };
 
+  renderForm() {
+    this._toggleButtonState()
+    this._inputList.forEach(inputElement => {
+      this._hideInputError(inputElement)
+    })
+  }
+
   _setEventListeners() {
-    const inputList = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
-    inputList.forEach(inputElement => {
+    this._inputList.forEach(inputElement => {
       inputElement.addEventListener('input', () => {
         this._toggleButtonState()
         this._checkInputValidity(inputElement)
@@ -20,23 +28,21 @@ export class FormValidation {
   }
 
   _toggleButtonState() {
-    const buttonElement = this._formElement.querySelector(this._config.submitButtonSelector)
     if (this._hasInvalidInput()) {
-      buttonElement.classList.add(this._config.inactiveButtonClass)
-      buttonElement.setAttribute('disabled', 'disabled')
+      this._buttonElement.classList.add(this._config.inactiveButtonClass)
+      this._buttonElement.setAttribute('disabled', 'disabled')
     } else {
-      buttonElement.classList.remove(this._config.inactiveButtonClass)
-      buttonElement.removeAttribute('disabled')
+      this._buttonElement.classList.remove(this._config.inactiveButtonClass)
+      this._buttonElement.removeAttribute('disabled')
     }
   }
 
   _checkInputValidity(inputElement) {
-      if (!inputElement.validity.valid) {
-        this._showInputError(inputElement);
-      } else {
-        this._hideInputError(inputElement);
-      } 
-
+    if (!inputElement.validity.valid) {
+      this._showInputError(inputElement);
+    } else {
+      this._hideInputError(inputElement);
+    }
   };
 
   _showInputError(inputElement) {
@@ -52,11 +58,9 @@ export class FormValidation {
     errorElement.classList.remove(this._config.errorActiveClass);
     errorElement.textContent = '';
 
-  };
-
+  }
   _hasInvalidInput() {
-    const inputList = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
-    return inputList.some((inputElement) => {
+    return this._inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
   }
