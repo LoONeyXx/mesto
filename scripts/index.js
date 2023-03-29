@@ -1,30 +1,33 @@
 /*  Popup перменные        */
+
 const popupEditProfile = document.querySelector(".popup_type_edit-profile");
 const popupAddCards = document.querySelector(".popup_type_add-card");
 const popupInputName = popupEditProfile.querySelector(".popup__input_type_name");
 const popupInputJob = popupEditProfile.querySelector(".popup__input_type_job");
 const popupBtnCloseTypeEdit = document.querySelector(".popup__btn-close");
-const popupImage = document.querySelector('.popup__image')
-const popupImageText = document.querySelector('.popup__image-text')
+const popupImage = document.querySelector('.popup__image');
+const popupImageText = document.querySelector('.popup__image-text');
 const popupFormEdit = document.querySelector(".popup__form_type_edit");
 const popupFormCards = document.querySelector(".popup__form_type_cards");
 const popupTypeImage = document.querySelector(".popup_type_image");
-const popups = document.querySelectorAll('.popup')
+const popups = document.querySelectorAll('.popup');
 
-/*   Перменные профиля           */
+/*   Перменные профиля       */
+
 const profileTitle = document.querySelector(".profile__title");
 const profileSubtitle = document.querySelector(".profile__subtitle");
 const profileBtnEdit = document.querySelector(".profile__btn-edit");
 const profileAddBtn = document.querySelector(".profile__btn-add");
 
-//  Перменные карточек
-const cardsContainer = document.querySelector(".cards__container");
-const cardTemplate = document.querySelector('#template-card').cloneNode(true).content.querySelector('.cards__item')
+/*  Перменные карточек */
 
+const cardsContainer = document.querySelector(".cards__container");
+const cardTemplate = document.querySelector('#template-card').cloneNode(true).content.querySelector('.cards__item');
 const cardsTitleInput = document.querySelector(".popup__input_type_card-title");
 const cardsLinkInput = document.querySelector(".popup__input_type_card-link");
-const closeBtns = document.querySelectorAll('.popup__btn-close')
-// Создание новой карточки
+const closeBtns = document.querySelectorAll('.popup__btn-close');
+
+/* Создание новой карточки */
 
 function createCard(card) {
   const newCard = cardTemplate.cloneNode(true)
@@ -47,13 +50,14 @@ function createCard(card) {
   return newCard
 }
 
-/*       Функция добавления новых карточек         */
+/*       Функция добавления новых карточек     */
 
 function addedNewCard() {
   cardsContainer.prepend(createCard({name:cardsTitleInput.value,link:cardsLinkInput.value}));
 }
 
 /*   Функция рендера Карточек        */
+
 function renderCards() {
   const cardsArray = [];
   initialCards.forEach(el =>
@@ -69,6 +73,7 @@ function deletedCard(evt) {
   evt.target.closest('.cards__item').remove();
 }
 /*     Функция для рендера формы добавления карточек    */
+
 function renderFormCard() {
   popupFormCards.reset()
   resetError(popupAddCards,config)
@@ -83,14 +88,14 @@ function renderEditForm() {
 
 }
 
-/*     Функция переключение состояния кнопки Like,*/
+/*     Функция переключение состояния кнопки Like  */
 
 function toogleLike(evt) {
   evt.target.classList.toggle('cards__like-btn_active')
 }
 
 
-/*    Функции для открытия Popup             */
+/*   Функции для открытия Popup     */
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
@@ -125,8 +130,7 @@ function closeOnOverlayClick(evt) {
   closePopup(evt.target)
 }
 
-
-/*     Функция для открывания popup и поведение кнопки 'Сохранить'     */
+/*   Функция для открывания popup и поведение кнопки 'Сохранить'   */
 
 function handleFormSubmitAddCard(evt) {
   evt.preventDefault()
