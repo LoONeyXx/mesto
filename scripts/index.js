@@ -1,7 +1,7 @@
 
 import { initialCards } from "./constants.js";
 import { config } from "./constants.js";
-import { FormValidation } from "./validation.js";
+import { FormValidation } from "./FormValidator.js";
 import Card from "./card.js";
 import { openPopup, closePopup } from "./utils.js";
 
