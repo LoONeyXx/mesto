@@ -37,6 +37,7 @@ closeBtns.forEach(button => {
 
 function renderFormCard() {
   popupFormCards.formElement.reset()
+  popupFormCards.renderForm()
   openPopup(popupAddCards)
 }
 
