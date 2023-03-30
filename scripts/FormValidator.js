@@ -1,10 +1,11 @@
 
 export class FormValidation {
   constructor(config, formElement) {
+    console.log(formElement)
     this._config = config
-    this._formElement = formElement
-    this._inputList = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
-    this._buttonElement = this._formElement.querySelector(this._config.submitButtonSelector)
+    this.formElement = formElement
+    this._inputList = Array.from(this.formElement.querySelectorAll(this._config.inputSelector));
+    this._buttonElement = this.formElement.querySelector(this._config.submitButtonSelector)
   }
 
   enableValidation() {
@@ -46,14 +47,14 @@ export class FormValidation {
   };
 
   _showInputError(inputElement) {
-    const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
+    const errorElement = this.formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add(this._config.inputErrorClass);
     errorElement.classList.add(this._config.errorActiveClass);
     errorElement.textContent = inputElement.validationMessage;
   };
 
   _hideInputError(inputElement) {
-    const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
+    const errorElement = this.formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.remove(this._config.inputErrorClass);
     errorElement.classList.remove(this._config.errorActiveClass);
     errorElement.textContent = '';
