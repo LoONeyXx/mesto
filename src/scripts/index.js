@@ -9,7 +9,6 @@ import Card from "./Card.js";
 
 
 
-
 const userInfo = new UserInfo(infoSelectors)
 
 const popupWithImage = new PopupWithImage('.popup_type_image')

@@ -9,7 +9,6 @@ export default class PopupWithForm extends Popup {
         const inputList = Array.from(this._form.querySelectorAll('.popup__input'))
         const values = inputList.reduce((obj, curr) => {
             obj[curr.name] = curr.value
-            console.log(curr)
             return obj
         }, {})
         return values
