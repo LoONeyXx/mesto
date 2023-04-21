@@ -1,10 +1,8 @@
-
-export class FormValidation {
+export default class FormValidation {
   constructor(config, formElement) {
-    console.log(formElement)
     this._config = config
     this.formElement = formElement
-    this._inputList = Array.from(this.formElement.querySelectorAll(this._config.inputSelector));
+    this.inputList = Array.from(this.formElement.querySelectorAll(this._config.inputSelector));
     this._buttonElement = this.formElement.querySelector(this._config.submitButtonSelector)
   }
 
@@ -14,13 +12,16 @@ export class FormValidation {
 
   renderForm() {
     this._toggleButtonState()
-    this._inputList.forEach(inputElement => {
+    this.inputList.forEach(inputElement => {
       this._hideInputError(inputElement)
     })
   }
 
   _setEventListeners() {
-    this._inputList.forEach(inputElement => {
+    this.formElement.addEventListener('submit', (evt) => {
+      evt.preventDefault()
+    })
+    this.inputList.forEach(inputElement => {
       inputElement.addEventListener('input', () => {
         this._toggleButtonState()
         this._checkInputValidity(inputElement)
@@ -61,7 +62,7 @@ export class FormValidation {
 
   }
   _hasInvalidInput() {
-    return this._inputList.some((inputElement) => {
+    return this.inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
   }
