@@ -1,5 +1,5 @@
 import '../pages/index.css'
-import { initialCards,infoSelectors, profileAddBtn, profileBtnEdit, config } from "./utils/constants.js";
+import { initialCards, infoSelectors, profileAddBtn, profileBtnEdit, config } from "./utils/constants.js";
 import FormValidation from "./FormValidator.js";
 import PopupWithImage from './PopupWithImage.js'
 import PopupWithForm from './PopupWithForm.js';
@@ -25,7 +25,7 @@ function createCard(card) {
 }
 
 const cardList = new Section({
-  items: initialCards, renderer: (item) => {
+  renderer: (item) => {
 
     const card = createCard(item)
 
@@ -34,10 +34,7 @@ const cardList = new Section({
 
 }, '.cards__container')
 
-cardList.renderItems()
-
-
-
+cardList.renderItems(initialCards)
 
 
 
@@ -72,7 +69,6 @@ function renderEditForm() {
   const infoValues = userInfo.getUserInfo()
   popupEditProfile.setInputValues(infoValues)
   formValidators['popup-form-edit'].renderForm()
-
 }
 
 
@@ -81,8 +77,5 @@ function setEventListenersForAll() {
   profileAddBtn.addEventListener("click", renderFormCard)
   profileBtnEdit.addEventListener("click", renderEditForm)
 }
-
-
-
 
 setEventListenersForAll()
