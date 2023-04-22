@@ -57,9 +57,5 @@ export const config = ({
 });
 
 
-export const popupInputName = document.querySelector(".popup__input_type_name");
-export const popupInputDescription = document.querySelector(".popup__input_type_description");
-
-
 export const profileBtnEdit = document.querySelector(".profile__btn-edit");
 export const profileAddBtn = document.querySelector(".profile__btn-add");

@@ -1,5 +1,5 @@
 import '../pages/index.css'
-import { initialCards, popupInputDescription, popupInputName, infoSelectors, profileAddBtn, profileBtnEdit, config } from "./utils/constants.js";
+import { initialCards,infoSelectors, profileAddBtn, profileBtnEdit, config } from "./utils/constants.js";
 import FormValidation from "./FormValidator.js";
 import PopupWithImage from './PopupWithImage.js'
 import PopupWithForm from './PopupWithForm.js';
@@ -17,32 +17,35 @@ const popupEditProfile = new PopupWithForm('.popup_type_edit-profile', (info) =>
   popupEditProfile.close()
 })
 
-
-
-function addedNewCards(cards) {
-  const cardList = new Section({
-    items: cards, renderer: (item) => {
-
-      const card = new Card(item, '#template-card', () => {
-        popupWithImage.open(item)
-      })
-
-      const cardElement = card.createCard()
-      cardList.addItem(cardElement)
-    }
-
-  }, '.cards__container')
-  cardList.renderItems()
+function createCard(card) {
+  const newCard = new Card(card, '#template-card', () => {
+    popupWithImage.open(card)
+  })
+  return newCard.createCard()
 }
 
-addedNewCards(initialCards)
+const cardList = new Section({
+  items: initialCards, renderer: (item) => {
+
+    const card = createCard(item)
+
+    cardList.addItem(card)
+  }
+
+}, '.cards__container')
+
+cardList.renderItems()
+
+
+
+
+
 
 const popupAddCard = new PopupWithForm('.popup_type_add-card', (card) => {
-  addedNewCards([card])
+  const newCard = createCard(card)
+  cardList.addItem(newCard)
   popupAddCard.close()
 })
-
-
 
 // Функция для валидации всех форм на странице (все валидаторы в обьекте formValidators)
 
