@@ -13,6 +13,10 @@ export default class PopupWithForm extends Popup {
         }, {})
         return values
     }
+
+    setInputValues(values) {
+        this._inputList.forEach(input => values[input.getAttribute('name')] ? input.value = values[input.getAttribute('name')] : input.value = '')
+    }
     
      close() {
         super.close()

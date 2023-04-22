@@ -12,12 +12,8 @@ import Card from "./Card.js";
 const userInfo = new UserInfo(infoSelectors)
 
 const popupWithImage = new PopupWithImage('.popup_type_image')
-const popupEditProfile = new PopupWithForm('.popup_type_edit-profile', () => {
-  const infoValues = {
-    description: popupInputDescription.value,
-    name: popupInputName.value
-  }
-  userInfo.setUserInfo(infoValues)
+const popupEditProfile = new PopupWithForm('.popup_type_edit-profile', (info) => {
+  userInfo.setUserInfo(info)
   popupEditProfile.close()
 })
 
@@ -71,8 +67,7 @@ function renderFormCard() {
 function renderEditForm() {
   popupEditProfile.open()
   const infoValues = userInfo.getUserInfo()
-  popupInputDescription.value = infoValues.description
-  popupInputName.value = infoValues.name
+  popupEditProfile.setInputValues(infoValues)
   formValidators['popup-form-edit'].renderForm()
 
 }
