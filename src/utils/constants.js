@@ -1,9 +1,9 @@
-import moscow from '../../images/moscow.png'
-import ekat from '../../images/ekat.png'
-import tula from '../../images/tula.png'
-import peter from '../../images/peter.png'
-import sochi from '../../images/sochi.png'
-import yaroslavl from '../../images/yaroslavl.png'
+import moscow from '../images/moscow.png'
+import ekat from '../images/ekat.png'
+import tula from '../images/tula.png'
+import peter from '../images/peter.png'
+import sochi from '../images/sochi.png'
+import yaroslavl from '../images/yaroslavl.png'
 
 
 
