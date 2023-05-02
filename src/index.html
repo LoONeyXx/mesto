@@ -14,7 +14,9 @@
   </header>
   <main class="content">
     <section class="profile">
-      <img src="<%=require('./images/icon.png')%>" alt="В небольшом кругу изображение профиля" class="profile__image">
+
+      <div class="profile__overlay"> <img src=""
+          alt="В небольшом кругу изображение профиля" class="profile__image"></div>
       <div class="profile__info">
         <h1 class="profile__title">LoONeyXx</h1>
         <button type="button" class="profile__btn-edit button opacity"></button>
@@ -32,9 +34,24 @@
               name="name" id="name">
             <span class="popup__input-error name-error"></span>
             <input minlength="2" maxlength="200" required class="popup__input popup__input_type_description" type="text"
-              name="description" id="description">
-            <span class="popup__input-error description-error"></span>
+              name="about" id="about">
+            <span class="popup__input-error about-error"></span>
             <button class="button popup__btn-save popup__btn-save_type_edit-profile" type="submit">
+              Cохранить
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </section>
+    <section class="popup popup_type_avatar-profile">
+      <div class="popup__container">
+        <button type="button" class="button popup__btn-close opacity"></button>
+        <h2 class="popup__title">Обновить аватар</h2>
+        <form novalidate name="avatar-profile" action="#" class="popup__form popup__form_type_avatar-profile">
+          <fieldset class="popup__input-group">
+            <input required placeholder="Добавьте ссылку на картинку" class="popup__input popup__input_type_avatar-profile" type="url" name="avatar" id="avatar">
+            <span class="popup__input-error avatar-error"></span>
+            <button class="button popup__btn-save popup__btn-save_type_evatar" type="submit">
               Cохранить
             </button>
           </fieldset>
@@ -74,13 +91,26 @@
           <img src="#" alt="" class="cards__image">
           <div class="cards__title-zone">
             <h2 class="cards__title"></h2>
-            <button type="button" class="button cards__like-btn">
+            <div class="cards__like-zone">
+              <button type="button" class="button cards__like-btn"></button>
+              <p class="cards__like-counter"></p>
+            </div>
+
             </button>
           </div>
         </li>
       </template>
       <ul class="list cards__container">
       </ul>
+    </section>
+    <section id="delete-card" class="popup popup_type_delete-card">
+      <div class="popup__container popup__container_type_delete-card">
+        <h2 class="popup__title popup__title_type_delete-card">Вы уверены?</h2>
+        <button type="button" class="button popup__btn-close popup__btn-close_type_delete-card opacity"></button>
+        <form action="#" class="popup__form popup__form_type_delete-card" name="delete-card">
+          <button class="button popup__btn-save popup__btn-save_type_delete-card" type="submit">Да</button>
+        </form>
+      </div>
     </section>
   </main>
   <footer class="footer">
