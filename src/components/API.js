@@ -9,7 +9,7 @@ export default class API {
                 'Content-Type': 'application/json'
             }
         })
-            .then(res => res.ok ? res.json() : Promise.reject(res.error))
+            .then(res => res.ok ? res.json() : Promise.reject(res.status))
     }
 
     getProfileInfo() {
@@ -19,7 +19,8 @@ export default class API {
                 'Content-Type': 'application/json'
             }
         })
-            .then(res => res.ok ? res.json() : Promise.reject(res.error))
+            .then(res => res.ok ? res.json() : Promise.reject(res.status))
+
             ;
     }
 
@@ -35,7 +36,7 @@ export default class API {
                 about: info.about
             })
         })
-            .then(res => res.ok ? res.json() : Promise.reject(res.error))
+            .then(res => res.ok ? res.json() : Promise.reject(res.status))
     }
 
     setProfileAvatar(info) {
@@ -49,7 +50,7 @@ export default class API {
                 avatar: info.avatar
             })
         })
-            .then(res => res.ok ? res.json() : Promise.reject(res.error))
+            .then(res => res.ok ? res.json() : Promise.reject(res.status))
     }
 
     addNewCard(info) {
@@ -64,7 +65,7 @@ export default class API {
                 link: info.link
             })
         })
-            .then(res => res.ok ? res.json() : Promise.reject(res.error))
+            .then(res => res.ok ? res.json() : Promise.reject(res.status))
     }
 
     deleteCard(id) {
@@ -75,7 +76,7 @@ export default class API {
                 'Content-Type': 'application/json'
             }
         })
-            .then(res => res.ok ? res : Promise.reject(res))
+            .then(res => res.ok ? res.json() : Promise.reject(res.status))
     }
 
 
@@ -87,7 +88,7 @@ export default class API {
                 'Content-Type': 'application/json'
             }
         })
-            .then(res => res.ok ? res.json() : Promise.reject(res.error))
+            .then(res => res.ok ? res.json() : Promise.reject(res.status))
     }
     removeLike(id) {
         return fetch(`https://mesto.nomoreparties.co/v1/cohort-65/cards/${id}/likes`, {
@@ -97,6 +98,6 @@ export default class API {
                 'Content-Type': 'application/json'
             }
         })
-            .then(res => res.ok ? res.json() : Promise.reject(res.error))
+            .then(res => res.ok ? res.json() : Promise.reject(res.status))
     }
 }

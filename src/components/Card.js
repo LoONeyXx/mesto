@@ -1,6 +1,6 @@
 
 export default class Card {
-    constructor(data, templateSelector, { handleClickImage, handleClickDelete, isOwn, addLike, removeLike, isLiked }) {
+    constructor(data, templateSelector, { handleClickImage, handleClickDelete, isOwn, addLike, removeLike }) {
         this._name = data.name;
         this._link = data.link
         this.id = data._id
@@ -8,11 +8,11 @@ export default class Card {
         this._likeList = data.likes
         this._likeCount = data.likes.length
         this._templateSelector = templateSelector
-        this._handleLikeClick =  this._handleClickLike.bind(this)
-        this._addLike = () => addLike(this.id)
-        this._removeLike = () => removeLike(this.id)
-        this._isOwn = () => isOwn(this._ownerId)
-        this._isLiked = () => this._likeList.some(({ _id }) => isLiked(_id))
+        this._handleLikeClick = this._clickLike.bind(this)
+        this._isLiked = this._likeList.some(({ _id }) => isOwn(_id))
+        this._isOwn = isOwn(this._ownerId)
+        this._addLike = () => addLike(this)
+        this._removeLike = () => removeLike(this)
         this._openPopup = () => handleClickImage({ name: this._name, link: this._link })
         this._openDeletePopup = () => handleClickDelete(this)
 
@@ -26,11 +26,11 @@ export default class Card {
         const titleCard = this._element.querySelector('.cards__title')
         this._imgCard = this._element.querySelector('.cards__image')
         this._deleteButton = this._element.querySelector('.cards__delete-btn')
-        if (!this._isOwn()) {
+        if (!this._isOwn) {
             this._removeDeleteButton()
         }
 
-        if (this._isLiked()) {
+        if (this._isLiked) {
             this._toogleLike()
         }
         this._likeCounter.textContent = this._likeCount
@@ -40,7 +40,6 @@ export default class Card {
         this._setEventListeners()
         return this._element
     }
-
 
     _removeDeleteButton() {
         this._deleteButton.remove()
@@ -52,15 +51,11 @@ export default class Card {
         if (this._deleteButton) {
             this._deleteButton.addEventListener('click', this._openDeletePopup)
         }
-
-
         this._likeBtn.addEventListener('click', this._handleLikeClick)
-
         this._imgCard.addEventListener('click', this._openPopup)
-
     }
 
-    _handleClickLike() {
+    _clickLike() {
         this._likeBtn.classList.toggle('cards__like-btn_active')
         if (this._likeBtn.classList.contains('cards__like-btn_active')) {
             this._addLike()

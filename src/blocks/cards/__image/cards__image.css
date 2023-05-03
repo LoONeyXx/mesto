@@ -6,4 +6,5 @@
   flex-grow: 1;
   height: 282px;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }

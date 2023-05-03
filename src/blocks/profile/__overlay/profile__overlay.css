@@ -10,12 +10,12 @@
 
 
 .profile__overlay::after {
-    content:'';
+    content: '';
     position: absolute;
     z-index: -1;
-    top:0;
-    left:0;
-    bottom:0;
+    top: 0;
+    left: 0;
+    bottom: 0;
     background: url('../../../images/profilePen.svg') no-repeat center;
     border-radius: 50%;
     width: 100%;
@@ -23,7 +23,9 @@
     height: 100%;
 }
 
-.profile__overlay:hover::after {
-    z-index: 2;
-    background-color: rgba(0,0,0,.8);
+@media (hover: hover) {
+    .profile__overlay:hover::after {
+        z-index: 2;
+        background-color: rgba(0, 0, 0, .8);
+    }
 }

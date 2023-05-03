@@ -4,18 +4,13 @@
   box-sizing: border-box;
   width: 100%;
   position: relative;
-  animation: cards .3s cubic-bezier(0, 0, 0.43, 1.32)
+  animation: cards .35s cubic-bezier(0, 0, 0.43, 1.32)
 }
 
 
 
 @keyframes cards {
   0% {
-    transform: scale(0);
-  
-  };
-  100% {
-    transform: scale(1);
-
+    transform: translateY(80%)
   }
 }
