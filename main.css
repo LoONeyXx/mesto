@@ -36,7 +36,7 @@
 .cards{padding-top:50px}@media screen and (max-width:980px){.cards{margin:0 auto;max-width:100%;padding-top:36px}}
 .cards__delete-btn{background:url(images/Trash.ce3b64935accf9b8212e.svg) no-repeat 50%;height:19px;position:absolute;right:20px;top:20px;width:18px}
 .cards__container{-moz-column-gap:17px;column-gap:17px;display:grid;grid-template-columns:repeat(auto-fill,282px);justify-content:center;margin:0 auto;row-gap:20px}
-.cards__item{animation:cards .35s cubic-bezier(0,0,.43,1.32);box-sizing:border-box;display:flex;flex-direction:column;position:relative;width:100%}@keyframes cards{0%{transform:scale(.5)};}
+.cards__item{animation:cards .35s cubic-bezier(0,0,.43,1.32);box-sizing:border-box;display:flex;flex-direction:column;position:relative;width:100%}@keyframes cards{0%{transform:translateY(80%)}}
 .cards__image{-webkit-tap-highlight-color:transparent;border-top-left-radius:10px;border-top-right-radius:10px;cursor:pointer;flex-grow:1;height:282px;-o-object-fit:cover;object-fit:cover;width:100%}
 .cards__title-zone{align-items:center;background-color:#fff;border-bottom-left-radius:10px;border-bottom-right-radius:10px;display:flex;justify-content:space-between;padding:25px 20px 25px 21px}
 .cards__title{font-family:Inter,Arial,Helvetica,sans-serif;font-size:24px;font-weight:900;line-height:29px;margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
