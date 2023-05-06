@@ -1,5 +1,6 @@
 @font-face{font-family:Inter;font-weight:900;src:url(fonts/Inter-Black.15ca31c0a2a68f76d2d1.woff2) format("woff2"),url(fonts/Inter-Black.c6938660eec019fefd68.woff) format("woff")}@font-face{font-family:Inter;font-weight:400;src:url(fonts/Inter-Regular.c8ba52b05a9ef10f4758.woff2) format("woff2"),url(fonts/Inter-Regular.8c206db99195777c6769.woff) format("woff")}@font-face{font-family:Inter;font-weight:500;src:url(fonts/Inter-Medium.293fd13dbca5a3e450ef.woff2) format("woff2"),url(fonts/Inter-Medium.9053572c46aeb4b16caa.woff) format("woff")}
 .list{list-style-type:none;margin:0;padding:0}
+.scale-animation{animation:cards .8s cubic-bezier(.3,.2,.3,1.1)}@keyframes cards{0%{transform:translateY(300px) scale(.1)}}
 .button{all:unset;box-sizing:border-box;cursor:pointer}
 .opacity{transition:opacity .2s linear}@media (hover:hover){.opacity:hover{opacity:.6}}
 .popup{align-items:center;background-color:rgba(0,0,0,.5);bottom:0;display:flex;height:100vh;justify-content:center;left:0;opacity:0;position:fixed;top:0;transition:all .2s linear;visibility:hidden;width:100%;z-index:2}
@@ -37,7 +38,7 @@
 .cards{padding-top:50px}@media screen and (max-width:980px){.cards{margin:0 auto;max-width:100%;padding-top:36px}}
 .cards__delete-btn{background:url(images/Trash.ce3b64935accf9b8212e.svg) no-repeat 50%;height:19px;position:absolute;right:20px;top:20px;width:18px}
 .cards__container{-moz-column-gap:17px;column-gap:17px;display:grid;grid-template-columns:repeat(auto-fill,282px);justify-content:center;margin:0 auto;row-gap:20px}
-.cards__item{animation:cards .8s cubic-bezier(.3,.2,.3,1.1);box-sizing:border-box;display:flex;flex-direction:column;position:relative;width:100%}@keyframes cards{0%{transform:translateY(300px) scale(.1)}}
+.cards__item{box-sizing:border-box;display:flex;flex-direction:column;position:relative;width:100%}
 .cards__image{-webkit-tap-highlight-color:transparent;border-top-left-radius:10px;border-top-right-radius:10px;cursor:pointer;flex-grow:1;height:282px;-o-object-fit:cover;object-fit:cover;width:100%}
 .cards__title-zone{align-items:center;background-color:#fff;border-bottom-left-radius:10px;border-bottom-right-radius:10px;display:flex;justify-content:space-between;padding:25px 20px 25px 21px}
 .cards__title{font-family:Inter,Arial,Helvetica,sans-serif;font-size:24px;font-weight:900;line-height:29px;margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
