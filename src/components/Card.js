@@ -1,6 +1,6 @@
 
 export default class Card {
-    constructor(data, templateSelector, { handleClickImage, handleClickDelete, isOwn, addLike, removeLike }) {
+    constructor(data, templateSelector, { handleClickImage, handleClickDelete, isOwnId, addLike, removeLike }) {
         this._name = data.name;
         this._link = data.link
         this.id = data._id
@@ -9,8 +9,8 @@ export default class Card {
         this._likeCount = data.likes.length
         this._templateSelector = templateSelector
         this._handleLikeClick = this._clickLike.bind(this)
-        this._isLiked = this._likeList.some(({ _id }) => isOwn(_id))
-        this._isOwn = isOwn(this._ownerId)
+        this._isLiked = this._likeList.some(({ _id }) => isOwnId(_id))
+        this._isOwn = isOwnId(this._ownerId)
         this._addLike = () => addLike(this)
         this._removeLike = () => removeLike(this)
         this._openPopup = () => handleClickImage({ name: this._name, link: this._link })
@@ -56,7 +56,7 @@ export default class Card {
     }
 
     _clickLike() {
-        this._likeBtn.classList.toggle('cards__like-btn_active')
+        this._toogleLike()
         if (this._likeBtn.classList.contains('cards__like-btn_active')) {
             this._addLike()
         } else {
@@ -69,12 +69,13 @@ export default class Card {
     }
 
 
-    renderLikes(count) {
-        this._likeCounter.textContent = count
+    renderLikes({ likes }) {
+        this._likeCounter.textContent = likes.length
     }
 
     deleteCard() {
         this._element.remove()
+        this._element = null
     }
 
 }

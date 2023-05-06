@@ -6,6 +6,15 @@ export const infoSelectors = {
 }
 
 
+export const apiOptions = {
+  cohort: 'cohort-65',
+  headers: {
+    authorization: '547b1838-f8d8-4d3c-9159-5143d62a0fab',
+    'Content-Type': 'application/json'
+  },
+  server: 'https://mesto.nomoreparties.co/v1'
+}
+
 export const config = ({
   formSelector: '.popup__form',
   inputSelector: '.popup__input',

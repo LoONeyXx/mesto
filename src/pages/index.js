@@ -1,7 +1,7 @@
 import './index.css'
-import { infoSelectors, profileAddBtn, profileBtnEdit, config, profileAvatarOverlay } from "../utils/constants.js"
+import { infoSelectors, profileAddBtn, profileBtnEdit, config, profileAvatarOverlay, apiOptions } from "../utils/constants.js";
 import FormValidation from "../components/FormValidator.js";
-import PopupWithImage from '../components/PopupWithImage.js'
+import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 import Section from '../components/Section.js'
@@ -20,125 +20,95 @@ const callbacksForCard = {
     popupDeleteCard.open(card)
   },
 
-  isOwn: (id) => {
+  isOwnId: (id) => {
     return id === userInfo.getUserInfo().id
   },
 
   addLike: (card) => {
     api.addLike(card.id)
-      .then(res => {
-        const countLikes = res.likes.length
-        card.renderLikes(countLikes)
-      })
-      .catch(error => console.log(error))
+      .then(card.renderLikes.bind(card))
+      .catch(console.log)
   },
 
   removeLike: (card) => {
     api.removeLike(card.id)
-      .then(res => {
-        const countLikes = res.likes.length
-        card.renderLikes(countLikes)
-      })
-      .catch(error => console.log(error))
+      .then(card.renderLikes.bind(card))
+      .catch(console.log)
   }
-
 }
 
-
-
-
-const api = new API('547b1838-f8d8-4d3c-9159-5143d62a0fab')
+const api = new API(apiOptions)
 const userInfo = new UserInfo(infoSelectors)
+
 //   Экемляры Popup
+
 const popupWithImage = new PopupWithImage('.popup_type_image')
 const popupProfileAvatar = new PopupWithForm('.popup_type_avatar-profile', (info) => {
-  popupProfileAvatar.loadingStateButton()
+  popupProfileAvatar.changeSubmitButton('Сохранение...')
   api.setProfileAvatar(info)
-    .then(() => {
-      renderProfileInfo()
+    .then((info) => {
+      userInfo.setUserInfo(info)
+      popupProfileAvatar.close()
     })
-    .catch(error => console.log(error))
+    .catch(console.log)
     .finally(() => {
-      popupProfileAvatar.close();
-      popupProfileAvatar.onloadStateButton()
+      popupProfileAvatar.changeSubmitButton('Сохранить')
+
     })
 })
 
 const popupEditProfile = new PopupWithForm('.popup_type_edit-profile', (info) => {
-  popupEditProfile.loadingStateButton()
+  popupEditProfile.changeSubmitButton('Сохранение...')
   api.setProfileInfo(info)
-    .then(() => {
-      renderProfileInfo()
-    })
-    .catch(error => console.log(error))
-    .finally(() => {
-      popupEditProfile.onloadStateButton()
+    .then((info) => {
+      userInfo.setUserInfo(info)
       popupEditProfile.close()
+    })
+    .catch(console.log)
+    .finally(() => {
+      popupEditProfile.changeSubmitButton('Сохранить')
     })
 
 })
 
 const popupDeleteCard = new PopupWithCofirmnation('.popup_type_delete-card', (card) => {
   api.deleteCard(card.id)
-    .then(() => {
-      card.deleteCard()
-    })
-    .catch(error => console.log(error))
-    .finally(() => {
-      popupDeleteCard.close()
-    })
+    .then(card.deleteCard.bind(card))
+    .catch(console.log)
+    .finally(popupDeleteCard.close.bind(popupDeleteCard))
 })
 
 const popupAddCard = new PopupWithForm('.popup_type_add-card', (card) => {
-  popupAddCard.loadingStateButton()
+  popupAddCard.changeSubmitButton('Сохранение...')
   api.addNewCard(card)
-    .then(res => {
-      const newCard = createCard(res)
-      cardList.addItem(newCard)
-    })
-    .catch(error => console.log(error))
-    .finally(() => {
-      popupAddCard.onloadStateButton()
+    .then((cardInfo) => {
+      addCard(cardInfo)
       popupAddCard.close()
     })
+    .catch(console.log)
+    .finally(() => {
+      popupAddCard.changeSubmitButton('Создать')
+    })
 })
+
 // Экземляр класса Section 
-const cardList = new Section({
-  renderer: (item) => {
-    const card = createCard(item)
-    cardList.addItem(card)
-  }
 
-}, '.cards__container')
-
+const cardList = new Section(addCard, '.cards__container')
 
 function createCard(card) {
-  const newCard = new Card(card, '#template-card',callbacksForCard )
+  const newCard = new Card(card, '#template-card', callbacksForCard)
   const newCardElement = newCard.createCard()
   return newCardElement
 }
 
-function renderProfileInfo() {
-  return api.getProfileInfo()
-    .then(info => userInfo.setUserInfo(info))
-    .catch(error => Promise.reject(error))
+function addCard(card) {
+  const newCard = createCard(card)
+  cardList.addItem(newCard)
 }
-
-function renderCards() {
-  return api.getCardsInfo()
-    .then(cards => {
-      cardList.renderItems(cards.reverse())
-    })
-    .catch(error => console.log(error))
-}
-
-
-// Функция для валидации всех форм на странице (все валидаторы в обьекте formValidators)
 
 
 function renderAvatarProfileForm() {
   formValidators['avatar-profile'].renderForm()
-  popupProfileAvatar.setInputValues()
   popupProfileAvatar.open()
 }
 
@@ -165,6 +135,8 @@ function setEventListenersForAll() {
 
 const formValidators = {}
 
+// Функция для валидации всех форм на странице (все валидаторы в обьекте formValidators)
+
 function validationForms() {
   Array.from(document.forms).forEach(form => {
     const validate = new FormValidation(config, form)
@@ -174,16 +146,13 @@ function validationForms() {
   })
 }
 
-renderProfileInfo()
-.then(() => {
-  renderCards()
-})
-.catch(error => console.log(error))
+Promise.all([api.getProfileInfo(), api.getCardsInfo()])
+  .then(([profileInfo, cards]) => {
+    userInfo.setUserInfo(profileInfo)
+    cardList.renderItems(cards)
+  })
+  .catch(console.log)
 
 validationForms()
 setEventListenersForAll()
-
-
-
-
 

@@ -19,12 +19,8 @@ export default class PopupWithForm extends Popup {
         this._inputList.forEach(input => values[input.getAttribute('name')] ? input.value = values[input.getAttribute('name')].trim() : input.value = '')
     }
 
-    loadingStateButton() {
-        this._submitButton.textContent = 'Cохраняется...'
-    }
-
-    onloadStateButton() {
-        this._submitButton.textContent = 'Cохранить'
+    changeSubmitButton(message) {
+        this._submitButton.textContent = message
     }
 
 

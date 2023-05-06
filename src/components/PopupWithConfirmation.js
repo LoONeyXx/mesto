@@ -1,10 +1,10 @@
 import Popup from "./Popup";
 
 export default class PopupWithCofirmnation extends Popup {
-    constructor(popupSelector,handleSubmit) {
+    constructor(popupSelector, handleSubmit) {
         super(popupSelector)
-        this._form = this._popup.querySelector('.popup__form')
-        this._handleSubmit = handleSubmit
+        this._confirmButton = this._popup.querySelector('.popup__btn-save_type_delete-card')
+        this._handleSubmit = () => handleSubmit(this._card)
     }
 
     open(card) {
@@ -14,10 +14,6 @@ export default class PopupWithCofirmnation extends Popup {
 
     setEventListeners() {
         super.setEventListeners()
-        this._form.addEventListener('submit', (e) => {
-            e.preventDefault()
-            this._handleSubmit(this._card)
-        })
-
+        this._confirmButton.addEventListener('click', this._handleSubmit)
     }
 }
