@@ -7,17 +7,17 @@ export default class UserInfo {
 
     getUserInfo() {
         return {
-            about:this._about.textContent,
-            name:this._name.textContent,
-            id:this._id,
+            about: this._about.textContent,
+            name: this._name.textContent,
+            id: this._id,
             avatar: this._avatar.src
         }
     }
 
     setUserInfo(newInfo) {
-        this._about.textContent = newInfo.about
-        this._name.textContent = newInfo.name
-        this._id = newInfo._id
-        this._avatar.src = newInfo.avatar
+        this._about.textContent = newInfo.about ? newInfo.about : this._about.textContent
+        this._name.textContent = newInfo.name ? newInfo.name : this._name.textContent
+        this._id = newInfo._id ? newInfo._id : this._id
+        this._avatar.src = newInfo.avatar ? newInfo.avatar : this._avatar.src
     }
 }
