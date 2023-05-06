@@ -31,7 +31,7 @@ export default class Card {
         }
 
         if (this._isLiked) {
-            this._toogleLike()
+            this.toogleLike()
         }
         this._likeCounter.textContent = this._likeCount
         titleCard.textContent = this._name
@@ -56,15 +56,14 @@ export default class Card {
     }
 
     _clickLike() {
-        this._toogleLike()
         if (this._likeBtn.classList.contains('cards__like-btn_active')) {
-            this._addLike()
-        } else {
             this._removeLike()
+        } else {
+            this._addLike()
         }
     }
 
-    _toogleLike() {
+    toogleLike() {
         this._likeBtn.classList.toggle('cards__like-btn_active')
     }
 

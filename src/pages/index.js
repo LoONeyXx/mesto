@@ -26,13 +26,19 @@ const callbacksForCard = {
 
   addLike: (card) => {
     api.addLike(card.id)
-      .then(card.renderLikes.bind(card))
+      .then((cardInfo) => {
+        card.toogleLike()
+        card.renderLikes(cardInfo)
+      })
       .catch(console.log)
   },
 
   removeLike: (card) => {
     api.removeLike(card.id)
-      .then(card.renderLikes.bind(card))
+      .then((cardInfo) => {
+        card.toogleLike()
+        card.renderLikes(cardInfo)
+      })
       .catch(console.log)
   }
 }
@@ -73,9 +79,11 @@ const popupEditProfile = new PopupWithForm('.popup_type_edit-profile', (info) =>
 
 const popupDeleteCard = new PopupWithCofirmnation('.popup_type_delete-card', (card) => {
   api.deleteCard(card.id)
-    .then(card.deleteCard.bind(card))
+    .then(() => {
+      card.deleteCard()
+      popupDeleteCard.close()
+    })
     .catch(console.log)
-    .finally(popupDeleteCard.close.bind(popupDeleteCard))
 })
 
 const popupAddCard = new PopupWithForm('.popup_type_add-card', (card) => {
